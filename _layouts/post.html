@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>{{page.title}}</title>
+
+    <style type="text/css">
+      body{
+        font-family: 'Liberation Serif';
+        background: #FFE;
+      }
+
+      article{
+
+        -moz-column-width: 60ex;
+        -moz-column-gap: 2em;
+        -moz-column-rule-width: 1px;
+        -moz-column-rule-color: #CCC;
+        -moz-column-rule-style: dashed;
+
+        -webkit-column-width: 60ex;
+        -webkit-column-gap: 2em;
+        -webkit-column-rule-width: 1px;
+        -webkit-column-rule-color: #CCC;
+        -webkit-column-rule-style: dashed;
+
+        column-width: 60ex;
+        column-gap: 2em;
+        column-rule-width: 1px;
+        column-rule-color: #CCC;
+        column-rule-style: dashed;
+        column-count: 2;
+
+        text-align: justify;
+      }
+
+      section, footer{
+        margin: 4em;
+        width: auto;
+      }
+      header {
+        text-align: center;
+        margin: auto;
+        margin-top: 1em;
+      }
+
+      header h1 {
+        margin-bottom: 0px;
+      }
+
+      header .byline {
+        margin-top: 0px;
+        font-style: italic;
+      }
+
+      h2 {
+        margin-top: 1.5em;
+      }
+
+      p {
+        margin-top: 0px;
+        padding-top: 0px;
+      }
+
+      aside {
+        font-size: small;
+        line-height: 1;
+        margin-left: 40px;
+      }
+
+      footer {
+        font-style: italic;
+        text-align: center;
+        border-top: 1px solid #CCC;
+        padding-top: 5px;
+        margin-top: -2em;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>{{page.title}}</h1>
+      <p class="byline">Conrad Irwin — {{page.fuzzydate}}</p>
+    </header>
+
+    <section>
+      <article>{{content}}</article>
+    </section>
+
+    <footer>
+    <p>Please do get in touch if you have feedback or need help.<br/> I am <a
+        href="http://twitter.com/ConradIrwin">@ConradIrwin</a>, <a
+        href="mailto:conrad.irwin@gmail.com">conrad.irwin@gmail.com</a> or <a
+        href="irc://irc.freenode.net/#pry">irc.freenode.net/cirwin</a>.</p>
+
+    <p>The content on this page is available under the <a
+            href="http://creativecommons.org/licenses/by/3.0/">CC-BY-3.0</a> licence.</p>
+    </footer>
+</body>
+</html>
