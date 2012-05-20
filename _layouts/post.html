@@ -191,11 +191,17 @@
     <footer>
     <p>Please do get in touch if you have feedback or need help.<br/> I am <a
         href="http://twitter.com/ConradIrwin">@ConradIrwin</a>, <a
+        href="https://github.com/ConradIrwin">github:ConradIrwin</a>, <a
         href="mailto:conrad.irwin@gmail.com">conrad.irwin@gmail.com</a> or <a
         href="irc://irc.freenode.net/#pry">irc.freenode.net/cirwin</a>.</p>
 
-    <p>The content on this page is available under the <a
-            href="http://creativecommons.org/licenses/by/3.0/">CC-BY-3.0</a> licence.</p>
+    <p>This content is available under the <a
+            href="http://creativecommons.org/licenses/by/3.0/">CC-BY-3.0</a> licence.
+
+    {% if page.credit %}
+        <br/>Thank you {{page.credit}} for suggesting improvements to this page.
+    {% endif %}
+    </p>
     </footer>
 
     <script type="text/javascript">
