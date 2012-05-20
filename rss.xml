@@ -1,0 +1,22 @@
+---
+layout: nil
+permalink: blog/rss.xml
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Conrad Irwin</title>
+  <link>http://cirw.in/</link>
+  <atom:link rel="self" href="http://cirw.in/blog/rss.xml"></atom:link>
+  <description>Conrad Irwin — sharing my stuff.</description>
+
+ {% for post in site.posts %}
+  <item>
+      <title>{{ post.title | xml_escape }}</title>
+      <link>http://cirw.in/{{ post.url }}</link>
+      <guid>http://cirw.in/{{ post.url }}</guid>
+      <description>{{ post.content | xml_escape }}</description>
+  </item>
+ {% endfor %}
+</channel>
+</rss>
