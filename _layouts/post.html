@@ -14,24 +14,32 @@
       article{
 
         -moz-column-width: 60ex;
-        -moz-column-gap: 2em;
+        -moz-column-gap: 4em;
         -moz-column-rule-width: 1px;
         -moz-column-rule-color: #CCC;
         -moz-column-rule-style: dashed;
 
         -webkit-column-width: 60ex;
-        -webkit-column-gap: 2em;
+        -webkit-column-gap: 4em;
         -webkit-column-rule-width: 1px;
         -webkit-column-rule-color: #CCC;
         -webkit-column-rule-style: dashed;
 
         column-width: 60ex;
-        column-gap: 2em;
+        column-gap: 4em;
         column-rule-width: 1px;
         column-rule-color: #CCC;
         column-rule-style: dashed;
 
         text-align: justify;
+      }
+
+      article > div {
+        min-width: 60ex;
+        max-width: 80ex;
+        margin-left: auto;
+        margin-right: auto;
+
       }
 
       .index article{
@@ -72,6 +80,7 @@
         font-size: small;
         line-height: 1;
         margin-left: 40px;
+        margin-bottom: 20px;
       }
 
       footer {
@@ -91,10 +100,6 @@
         width: 100%;
       }
 
-      /* The markdown toolchain has a tendency to insert empty paragraphs,
-         ah well... */
-      p:empty { display: none; }
-
       pre {
         display: inline-block; /* so that it doesn't get split across columns */
         margin: 12px;
@@ -103,8 +108,8 @@
       .highlight {
         background: #ffffff;
         border: 1px dotted #CCC;
-        margin-left: 10px;
-        margin-right: 10px;
+        margin-left: 20px;
+        margin-right: 20px;
         margin-bottom: 20px;
       }
 
@@ -177,7 +182,7 @@
     </header>
 
     <section>
-      <article>{{content}}</article>
+      <article><div>{{content}}</div></article>
     </section>
 
     <footer>
