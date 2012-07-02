@@ -3,6 +3,7 @@ title: MVC is dead, it's time to MOVE on.
 permalink: blog/time-to-move-on.html
 layout: post
 fuzzydate: June 2012
+credit: John Mair and Ryan King
 ---
 
 MVC is a phenomenal idea. You have models, which are nice self-contained bits of
@@ -15,8 +16,8 @@ I'm certainly not the first person to notice this, but the problem with MVC as g
 that you end up stuffing too much code into your controllers, because you don't know where
 else to put it.
 
-To fix this I propose <b>MOVE</b>. <b>M</b>odels, <b>O</b>perations, <b>V</b>iews, and
-<b>E</b>vents.
+To fix this I've been using a new pattern: <b>MOVE</b>. <b>M</b>odels, <b>O</b>perations,
+<b>V</b>iews, and <b>E</b>vents.
 
 Overview
 ========
@@ -47,10 +48,10 @@ Models
 The archetypal model is a "user" object. It has at the very least an email address, and
 probably also a name and a phone number.
 
-In a MOVE application, model's only wrap knowledge. That means that they might contain
-functions that let you check "is this the user's password?", but they don't contain
-functions that let you save them to a database or upload them to an external API. That
-would be the job of an operation.
+In a MOVE application models only wrap knowledge. That means that, in addition to getters
+and setters, they might contain functions that let you check "is this the user's
+password?", but they don't contain functions that let you save them to a database or
+upload them to an external API. That would be the job of an operation.
 
 Operations
 ==========
@@ -97,7 +98,8 @@ I don't wish to be misunderstood as implying that MVC is bad; it truly has been 
 incredibly successful way to structure large applications for the last few decades. Since
 it was invented however, new programming techniques have become popular. Without closures
 (or anonymous blocks) event binding can be very tedious; and without deferrables (also
-known as deferreds or promises) operations don't really stand out as objects on their own.
+known as deferreds or promises) the idea of treating individual operations as objects in
+their own right doesn't make much sense.
 
 To re-iterate: MVC is awesome, but it's designed with decades old technologies. MOVE is
 just a update to make better use of the new tools we have.
