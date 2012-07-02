@@ -3,7 +3,7 @@ title: MVC is dead, it's time to MOVE on.
 permalink: blog/time-to-move-on.html
 layout: post
 fuzzydate: June 2012
-credit: John Mair and Ryan King
+credit: John Mair, Martin Kleppmann and Ryan King
 ---
 
 MVC is a phenomenal idea. You have models, which are nice self-contained bits of
@@ -66,6 +66,11 @@ triggered by user interactions. In a well factored application, each sub-operati
 run independently of its parent; which is why in the diagram events flow upwards, and
 changes are pushed downwards.
 
+What's exciting about using operations in this way is that your entire application can
+itself be treated as an operation that starts when the program boots. It spawns as many
+sub-operations as it needs, where each concurrently existing sub-operation is run in
+parallel, and exits the program when they are all complete.
+
 Views
 =====
 
@@ -104,7 +109,7 @@ their own right doesn't make much sense.
 To re-iterate: MVC is awesome, but it's designed with decades old technologies. MOVE is
 just a update to make better use of the new tools we have.
 
-<aside>author's note: I'm not the only one beginning to think this way either, if you like
+<aside>P.S. I'm not the only one beginning to think this way either, if you like
 the idea of MOVE you should check out [objectify](https://github.com/bitlove/objectify)
 and
 [interactions](http://collectiveidea.com/blog/archives/2012/06/28/wheres-your-business-logic/)
