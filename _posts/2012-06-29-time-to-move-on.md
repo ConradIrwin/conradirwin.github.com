@@ -116,3 +116,6 @@ and
 which try to add some of the benefits of MOVE to existing MVC applications.  Please [let
 me know](https://twitter.com/conradirwin) if you have other links that should be
 here!</aside>
+
+<aside>P.P.S This blog post has been translated into Japanese no fewer than twice:
+[d.hatena.ne.jp](http://d.hatena.ne.jp/nowokay/20120704#c) and [blog.neo.jp](http://blog.neo.jp/dnblog/index.php?module=Blog&blog=pg&action=CommentPostDo&entry_id=3442). Thanks!</aside>
