@@ -18,7 +18,7 @@ What does it do?
 ================
 
 Whenever an unhandled exception happens in your program, pry-rescue opens an interactive
-[pry](https://pryrepl.org/) shell right at the point it was raised. Instead of glowering
+[pry](http://pryrepl.org/) shell right at the point it was raised. Instead of glowering
 at a stack-trace spewed out by a dying process, you'll be engaging with your program as
 though it were still alive!
 
