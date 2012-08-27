@@ -46,22 +46,22 @@ Uh… do you have an example?
 
 Sure! Let's imagine that I wrote some code that looks like this:
 
-<div class="highlight"><pre><code clas="ruby"><span class="bold"><span class="f8"><span class="blink"></span></span><span class="bold">def</span> <span class="f8"><span class="nf">find_capitalized</span></span></span>(a)
-   a.select <span class="f8"><span class="blink"></span></span><span class="bold">do</span> |name|
+<div class="highlight"><pre><code clas="ruby"><span class="bold"><span class="f8"></span><span class="bold">def</span> <span class="f8"><span class="nf">find_capitalized</span></span></span>(a)
+   a.select <span class="f8"></span><span class="bold">do</span> |name|
      name.chars.first == name.chars.first.upcase
-   <span class="f8"><span class="blink"></span></span><span class="bold">end</span>
- <span class="f8"><span class="blink"></span></span><span class="bold">end</span>
+   <span class="f8"></span><span class="bold">end</span>
+ <span class="f8"></span><span class="bold">end</span>
 </code></pre></div>
 
 Now I run the code: `rescue rescue.rb`
 
 <div class="highlight"><pre><code clas="ruby"><span class="bold">From:</span> rescue.rb @ line 2 Object#find_capitalized:
 
-    <span class="ef30">2</span>: <span class="f8"><span class="blink"></span></span><span class="bold">def</span> <span class="f8"><span class="blink"><span class="nf">find_capitalized</span></span></span>(a)
-    <span class="ef30">3</span>:   a.select <span class="f8"><span class="blink"></span></span><span class="bold">do</span> |name|
+    <span class="ef30">2</span>: <span class="f8"></span><span class="bold">def</span> <span class="f8"><span><span class="nf">find_capitalized</span></span></span>(a)
+    <span class="ef30">3</span>:   a.select <span class="f8"></span><span class="bold">do</span> |name|
  =&gt; <span class="ef30">4</span>:     name.chars.first == name.chars.first.upcase
-    <span class="ef30">5</span>:   <span class="f8"><span class="blink"></span></span><span class="bold">end</span>
-    <span class="ef30">6</span>: <span class="f8"><span class="blink"></span></span><span class="bold">end</span>
+    <span class="ef30">5</span>:   <span class="f8"></span><span class="bold">end</span>
+    <span class="ef30">6</span>: <span class="f8"></span><span class="bold">end</span>
 
 NoMethodError: undefined method `chars' for :direction:Symbol
 from rescue.rb:4:in `block in find_capitalized'
@@ -74,13 +74,13 @@ can find which code is calling this method with symbols:
 <div class="highlight"><pre><code clas="ruby">[1] pry(main)&gt; up
 <span class="bold">From:</span> rescue.rb @ line 8 Object#extract_people:
 
-     <span class="ef30">8</span>: <span class="f8"><span class="blink"></span></span><span class="bold">def</span> <span class="f8"><span class="blink"><span class="nf">extract_people</span></span></span>(opts)
+     <span class="ef30">8</span>: <span class="f8"></span><span class="bold">def</span> <span class="f8"><span><span class="nf">extract_people</span></span></span>(opts)
  =&gt;  <span class="ef30">9</span>:   name_keys = find_capitalized(opts.keys)
     <span class="ef30">10</span>: 
-    <span class="ef30">11</span>:   name_keys.each_with_object({}) <span class="f8"><span class="blink"></span></span><span class="bold">do</span> |name, o|
+    <span class="ef30">11</span>:   name_keys.each_with_object({}) <span class="f8"></span><span class="bold">do</span> |name, o|
     <span class="ef30">12</span>:     o[name] = opts.delete name
-    <span class="ef30">13</span>:   <span class="f8"><span class="blink"></span></span><span class="bold">end</span>
-    <span class="ef30">14</span>: <span class="f8"><span class="blink"></span></span><span class="bold">end</span>
+    <span class="ef30">13</span>:   <span class="f8"></span><span class="bold">end</span>
+    <span class="ef30">14</span>: <span class="f8"></span><span class="bold">end</span>
 
 [2] pry(main)&gt; opts
 =&gt; {<span class="ef161"><span class="ef161">&quot;</span></span><span class="ef161"><span class="ef161">Arthur</span></span><span class="ef161"><span class="ef161">&quot;</span></span><span class="ef161"></span>=&gt;<span class="ef161"><span class="ef161">&quot;</span></span><span class="ef161"><span class="ef161">Dent</span></span><span class="ef161"><span class="ef161">&quot;</span></span><span class="ef161"></span>, <span class="ef90">:direction</span>=&gt;<span class="ef90">:left</span>}
@@ -103,11 +103,11 @@ Got it. Let's `edit-method` to fix the code,  and `try-again` to verify the fix 
 [7] pry(main)> whereami
 <span class="bold">From:</span> rescue.rb @ line 2 Object#find_capitalized:
 
-    <span class="ef30">2</span>: <span class="f8"><span class="blink"></span></span><span class="bold">def</span> <span class="f8"><span class="blink"><span class="nf">find_capitalized</span></span></span>(a)
- =&gt; <span class="ef30">3</span>:   a.select <span class="f8"><span class="blink"></span></span><span class="bold">do</span> |name|
+    <span class="ef30">2</span>: <span class="f8"></span><span class="bold">def</span> <span class="f8"><span><span class="nf">find_capitalized</span></span></span>(a)
+ =&gt; <span class="ef30">3</span>:   a.select <span class="f8"></span><span class="bold">do</span> |name|
     <span class="ef30">4</span>:     name.capitalize == name
-    <span class="ef30">5</span>:   <span class="f8"><span class="blink"></span></span><span class="bold">end</span>
-    <span class="ef30">6</span>: <span class="f8"><span class="blink"></span></span><span class="bold">end</span>
+    <span class="ef30">5</span>:   <span class="f8"></span><span class="bold">end</span>
+    <span class="ef30">6</span>: <span class="f8"></span><span class="bold">end</span>
 
 [8] pry(main)&gt; try-again
 Arthur Dent moves left
