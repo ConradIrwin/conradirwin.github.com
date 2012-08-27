@@ -6,7 +6,7 @@ fuzzydate: August 2012
 ---
 
 <aside>This post is also available [in
-Russian](http://scriptogr.am/entooru/post/20120827-pry-to-the-rescue). Thanks kyrylo!</aside>
+Russian](http://scriptogr.am/entooru/post/20120827-pry-to-the-rescue). Thanks [kyrylo](mailto:kyrylosilin@gmail.com)!</aside>
 
 Introducing: [pry-rescue](https://github.com/ConradIrwin/pry-rescue): super-fast,
 painless, debugging for the (ruby) masses.
