@@ -5,11 +5,8 @@ layout: post
 fuzzydate: August 2012
 ---
 
-<style>
-  article > div {
-    min-width: 70ex !important;
-  }
-</style>
+<aside>This post is also available [in
+Russian](http://scriptogr.am/entooru/post/20120827-pry-to-the-rescue). Thanks kyrylo!</aside>
 
 Introducing: [pry-rescue](https://github.com/ConradIrwin/pry-rescue): super-fast,
 painless, debugging for the (ruby) masses.
