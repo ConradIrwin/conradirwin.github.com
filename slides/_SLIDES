@@ -1,0 +1,85 @@
+
+Hi, I'm Conrad; one of the co-maintainers of Pry.
+
+Just before we get started, how many people here have heard of pry?
+
+And how many of you actively use it?
+
+Cool, lots of you!
+
+For those of you who are still in the dark, Pry is a ruby REPL (just like irb).
+In addition to allowing you to execute ruby code, Pry also includes a number of
+extra commands that you can use to explore your program "from 10\_000 feet".
+
+For today, I'd like to concentrate on one particular use of Pry: faster
+debugging.
+
+"""If debugging is the process of removing bugs, then programming must be the
+process of putting them in.  ~Edsger Dijkstra"""
+
+--- 1/3
+
+The way I program is pretty simple: First I come up with an idea for how I want
+to write the code, and then I type it out.
+
+Unfortunately, it seems that nine-times-out-of-ten, when I then go to run the
+code; it doesn't quite work how I think. Usually the way this manifests itself
+is an exception.
+
+Back in the very old days, what I used to do at this point, is add a few
+"puts"s, run the code again; add a few more "puts"s run the code again, etc.
+
+Then I found pry, instead of lots of "puts"s, all I need to do is add a
+`binding.pry`. From inside that I can print out all of the values I need to see,
+and I only need to change the code once.
+
+Recently though, I realised that this was a waste of time, and added
+`pry-rescue` into the mix. What pry rescue does is automatically add a
+binding.pry on every unraised exception.
+
+This means that I can "puts" as many values as I like, and I don't have to edit
+the code, or restart the process, or re-run the web request, or anything. It's
+just there exactly when you need it.
+
+If there's one thing that you take away from this talk, let it be this: "if you
+are adding puts statements, instead of using pry, you are wasting your own time".
+
+--- 2/3
+
+It turns out however, that opening a binding.pry actually enables far more than
+just puts'ing the values of objects.
+
+In Ruby, the most common error message you get is `NoMethodError`. Half of the
+time, this is ruby's way of telling you that you have a typo, the other half of
+the time it means that you're calling a method that actually doesn't exist.
+
+The old fashioned way of dealing with this problem is to try and open the
+documentation for the library you're using, and look up the correct name for
+that method.
+
+If you've been programming ruby for a while, you'll have noticed that the documentation is sometimes a little lacking, and so this often entails reading the source of the library until you find what you want.
+
+Again pry comes to the rescue. its `ls` command can be used to show you a list of methods on the object. I literally cannot count how many hours of googling and code-reading that this has saved me from.
+
+--- 3/3
+
+So now I've either spotted my typo of looked up the correct method. The next (and hopefully final) step is to correct the code that caused the problem.
+
+Again, for contrast, the old way I used to do this was to open the offending file in my text editor; jump to the corresponding line; change the file, save the file.
+
+Yet again, we turn to pry. Instead of manually changing window and navigating manually. We can use `edit --ex`. As the Pry docs say, this opens the file containing the line that raised the most recent exception. What the Pry docs don't say, is that it also jumps you to exactly the correct line.
+
+This removes a lot of the needless overhead between finding a bug and fixing a bug; you can just jump right there without thinking, freeing up your brain for the important work.
+
+As a final bonus, when you use Pry's edit command; it reloads the file you changed into the current process. This means that you can continue debugging by just typing `try-again`.
+
+
+--- 3/4
+
+There are a lot of features of Pry that I've left unsung. You can do step through debugging, explore objects explicitly, and search a loaded program.
+
+1. Don't add puts statements, use binding.pry.
+2. Don't use Google, use `ls` and `show-source`.
+3. Don't faf around to solve the problem, just `edit --ex`, and `try-again`.
+
+Thanks for listening :).

@@ -1,0 +1,104 @@
+
+
+    <pry logo>
+
+
+--
+
+If debugging is the process of removing bugs, then programming must be the
+process of putting them in. 
+    Edsger Dijkstra
+
+--
+
+    Programming 101
+
+• Think about problem
+• Type out solution
+
+--
+
+    Programming 101
+
+• Think about problem
+• Type out solution
+• Debug
+
+--
+
+    Debugging
+
+• Figure out why the code is broken
+• Fix the code
+• Repeat. (lots)
+
+--
+
+    puts
+
+• Easy to use
+• Can check one hypothesis
+• Inefficient
+
+--
+
+    binding.pry
+
+• Quite easy to use (`gem install pry`, `require pry`)
+• Can check multiple hypotheses
+• More efficient
+
+--
+    
+    pry-rescue
+
+• Somewhat easy to use (`gem install pry-rescue`, `rescue <program>`)
+• Can check multiple hypotheses
+• Super-efficient
+
+--
+
+    NoMethodError
+
+• Typo 
+• Calling the wrong function on the right object
+• Calling the right function on the wrong object
+
+--
+
+    edit --ex
+
+• Opens your editor
+• Jumps to the problem
+• Reloads the code
+
+--
+
+    ls --grep
+
+• Finds the right function
+• Much faster than Google/ri/rdoc
+• Can use show-doc/show-source for more detail
+
+--
+
+    up/down
+
+• Move pry up and down the callstack
+• Discover why you have the wrong object
+• Debug gems
+
+--
+
+    And more...
+
+• Try `help` inside Pry
+• wtf? 
+• Loads of plugins: gem list -r 'pry-*'
+
+--
+    
+    <EOF>
+
+• me: @ConradIrwin (GitHub, Twitter, Gmail, &c.)
+• pry: http://pryrepl.org/

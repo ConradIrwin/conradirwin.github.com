@@ -1,0 +1,20 @@
+Hi, I'm Conrad, one of the maintainers of Pry.
+
+Before we get started, how many of you already know what Pry is?
+
+And how many of you use it regularly?
+
+Cool, lots of you!
+
+Pry. For those of you who don't know, it's a ruby shell. If you've used IRB, you'll get the idea pretty quickly. You type in ruby, it gives you the answer. Luckily, pry has a few more tricks up its sleeve, and today I'll explain how it can make you better at debugging.
+
+--
+
+If debugging is the process of removing bugs, then programming must be the process of putting them in.
+
+All code has bugs, this is something that even after half a century we don't seem any closer to solving.
+
+
+
+
+
