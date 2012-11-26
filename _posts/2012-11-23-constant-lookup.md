@@ -3,7 +3,7 @@ title: Everything you ever wanted to know about constant lookup in Ruby
 permalink: blog/constant-lookup.html
 layout: post
 fuzzydate: November 2012
-credit: Martin Kleppmann
+credit: Martin Kleppmann, John Mair
 style: "article{ -webkit-column-count: 1; -moz-column-count: 1; column-count: 1; }"
 ---
 
@@ -16,8 +16,8 @@ its name: `FooClass`. But how does that actually work?
 
 <aside>Although the answer turns out to be reasonably straightforward, I've included a lot
 of examples. It's easy to tell you that constant lookup searches for constants that are defined in
-`(Module.nesting + (Module.nesting.first || Object).ancestors)`, but that doesn't really
-help with understanding.</aside>
+`Module.nesting`, `Module.nesting.first.ancestors`, and `Object.ancestors` if
+Module.nesting.first is nil or a module, but that doesn't really help with understanding.</aside>
 
 Module.nesting
 ==============
@@ -147,6 +147,17 @@ end
 For cases like this, and anywhere else you want to be explicit, Ruby allows you to use
 `::Kernel` to access `Object::Kernel`.
 
+Ruby assumes that you will mix modules into something that inherits from `Object`. So if
+the currently open module is a module, it will also add `Object.ancestors` to the lookup
+chain so that top-level constants work as expected:
+
+{% highlight ruby %}
+module A; end
+module B;
+  A == Object::A
+end
+{% endhighlight %}
+
 `class_eval`
 ============
 
@@ -246,9 +257,10 @@ class Binding
   def const(name)
     eval <<-CODE, __FILE__, __LINE__ + 1
       modules = Module.nesting + (Module.nesting.first || Object).ancestors
+      modules += Object.ancestors if Module.nesting.first.class == Module
       found = nil
 
-      modules.each do |mod|
+      modules.detect do |mod|
         found = mod.const_get(#{name.inspect}, false) rescue nil
       end
       found or const_missing(#{name.inspect})
