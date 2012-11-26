@@ -3,6 +3,7 @@ title: Everything you ever wanted to know about constant lookup in Ruby
 permalink: blog/constant-lookup.html
 layout: post
 fuzzydate: November 2012
+credit: Martin Kleppmann
 style: "article{ -webkit-column-count: 1; -moz-column-count: 1; column-count: 1; }"
 ---
 
@@ -14,7 +15,7 @@ This is particularly true of constant lookup. To access a constant in ruby, you 
 its name: `FooClass`. But how does that actually work?
 
 <aside>Although the answer turns out to be reasonably straightforward, I've included a lot
-of examples. It's easy to tell you that constant lookup searches for constants in
+of examples. It's easy to tell you that constant lookup searches for constants that are defined in
 `(Module.nesting + (Module.nesting.first || Object).ancestors)`, but that doesn't really
 help with understanding.</aside>
 
@@ -73,7 +74,7 @@ Ancestors
 =========
 
 If the constant cannot be found by looking at any of the modules in `Module.nesting`, Ruby
-takes the currently open class or module, and looks at its ancestors.
+takes the currently open module or class, and looks at its ancestors.
 
 {% highlight ruby %}
 class A
@@ -85,21 +86,21 @@ class C < A
 end
 {% endhighlight %}
 
-The currently open class is the innermost `class` or `module` statement in the code. A
-common misconception is that constant lookup uses `self.class`, which is not true. (btw,
-it's not using the [default definee](http://yugui.jp/articles/846) either, just in case
-you wondered):
+The currently open class or module is the innermost `class` or `module` statement in the
+code. A common misconception is that constant lookup uses `self.class`, which is not true.
+(btw, it's not using the [default definee](http://yugui.jp/articles/846) either, just in
+case you wondered):
 
 {% highlight ruby %}
 class A
-  def get_d; C; end
+  def get_c; C; end
 end
 
 class B < A
   module C; end
 end
 
-B.new.get_d
+B.new.get_c
 # NameError: uninitialized constant A::C
 {% endhighlight %}
 
@@ -127,14 +128,14 @@ module C; end
 Object::C == C
 {% endhighlight %}
 
-Given that almost everything in Ruby is an Object (even classes!), the defaulting of the
-currently open class to Object at the top of the file is the magic that makes top-level
-constants available everywhere.
+This in turn explains why top-level constants are available throughout your program.
+Almost all classes in Ruby inherit from Object, so Object is almost always included in
+the list of ancestors of the currently open class, and thus its constants are almost
+always available.
 
 That said, if you've ever used a `BasicObject`, and noticed that top-level constants are
 missing, you now know why. Because `BasicObject` does not subclass `Object`, all of the
 constants are not in the lookup chain:
-
 
 {% highlight ruby %}
 class Foo < BasicObject
@@ -245,10 +246,12 @@ class Binding
   def const(name)
     eval <<-CODE, __FILE__, __LINE__ + 1
       modules = Module.nesting + (Module.nesting.first || Object).ancestors
+      found = nil
 
-      modules.detect do |mod|
-        break mod.const_get(#{name.inspect}, false) rescue nil
-      end or const_missing(#{name.inspect})
+      modules.each do |mod|
+        found = mod.const_get(#{name.inspect}, false) rescue nil
+      end
+      found or const_missing(#{name.inspect})
     CODE
   end
 end
