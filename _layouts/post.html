@@ -67,8 +67,9 @@
       }
       header {
         text-align: center;
-        margin: auto;
         margin-top: 1em;
+        margin-left: 4em;
+        margin-right: 4em;
       }
 
       header h1 {
@@ -105,7 +106,7 @@
         text-align: center;
         border-top: 1px solid #CCC;
         padding-top: 5px;
-        margin-top: -2em;
+        margin-top: 1em;
       }
 
       /* Slight abuse of "figure" to allow me to define groups of stuff that
@@ -473,6 +474,29 @@
       .underline { text-decoration: underline; }
       .line-through { text-decoration: line-through; }
 
+      nav {
+        margin-top: -2em;
+        margin-left: 4em;
+        margin-right: 4em;
+        margin-bottom: 1em;
+      }
+
+      nav:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+        line-height: 0;
+      }
+
+      nav a {
+        max-width: 250px;
+        display: block;
+      }
+      nav a.previous{ float: left; }
+      nav a.next{ float: right; margin-left: 10px; }
+
     </style>
   </head>
 
@@ -480,6 +504,7 @@
     <header>
       <h1>{{page.title}}</h1>
       <p class="byline"><a href="/" title="List of posts">Conrad Irwin</a> — {{page.fuzzydate}}</p>
+
       <div class="followme">
           <a style="visibility: hidden" href="https://twitter.com/conradirwin" class="twitter-follow-button" data-show-count="false">Follow @conradirwin</a>
 <script>!function(d,s,id){var
@@ -490,6 +515,15 @@
     <section>
       <article><div>{{content}}</div></article>
     </section>
+
+    <nav>
+      {% if page.previous.permalink %}
+          <a href="/{{page.previous.permalink | replace:'.html',''}}" class="previous">← {{page.previous.title}}</a>
+      {% endif %}
+      {% if page.next.permalink %}
+          <a href="/{{page.next.permalink | replace:'.html',''}}" class="next">{{page.next.title}} →</a>
+      {% endif %}
+    </nav>
 
     <footer>
     <p> I am <a
