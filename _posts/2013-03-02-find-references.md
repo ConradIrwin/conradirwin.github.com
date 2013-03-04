@@ -3,6 +3,7 @@ title: Visualizing memory leaks in Ruby
 permalink: blog/find-references.html
 layout: post
 fuzzydate: Mar 2013
+credit: Chris Gahan
 ---
 
 Memory leaks are my least favourite type of bug. To track them down requires not only a detailed knowledge of the entire codebase but also strong intuition (or a lot of luck). To make the process more fun I've written a patch for ruby 1.9.3 that lets you visualize portions of the memory graph.
@@ -14,9 +15,8 @@ Ruby already comes with `ObjectSpace` which contains a few methods for analyzing
 
 {%highlight ruby%}
 counts = Hash.new{ 0 }
-enum = ObjectSpace.each_object
-enum.each_with_object(counts) do |o, h|
-  h[o.class] += 1
+ObjectSpace.each_object do |o|
+  counts[o.class] += 1
 end
 {% endhighlight %}
 
