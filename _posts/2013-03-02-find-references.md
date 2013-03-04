@@ -3,7 +3,7 @@ title: Visualizing memory leaks in Ruby
 permalink: blog/find-references.html
 layout: post
 fuzzydate: Mar 2013
-credit: Chris Gahan
+credit: Chris Gahan, Sam Stokes
 ---
 
 Memory leaks are my least favourite type of bug. To track them down requires not only a detailed knowledge of the entire codebase but also strong intuition (or a lot of luck). To make the process more fun I've written a patch for ruby 1.9.3 that lets you visualize portions of the memory graph.
@@ -60,18 +60,21 @@ Using [rvm](http://rvm.io) with a patch:
 {%highlight bash%}
 curl -L http://git.io/kRIgxw > references.patch
 rvm install 1.9.3-p392-fr --patch ./references.patch
+rvm use 1.9.3-p392-fr
 {% endhighlight %}
 
 Using [rbenv](https://github.com/sstephenson/rbenv) with ruby-build:
 {%highlight bash%}
 curl -L http://git.io/4fQ9Jg > 1.9.3-p392-fr
 rbenv install ./1.9.3-p392-fr
+rbenv shell 1.9.3-p392-fr
 {% endhighlight %}
 
 Using [chruby](https://github.com/postmodern/chruby) with ruby-build:
 {%highlight bash%}
 curl -L http://git.io/4fQ9Jg > 1.9.3-p392-fr
 ruby-build ./1.9.3-p392-fr ~/.rubies/ruby-1.9.3-p392-fr
+chruby 1.9.3-p392-fr
 {% endhighlight %}
 
 To get pretty pictures, you'll also need to `brew install graphviz` or `apt-get install graphviz`.
