@@ -50,12 +50,21 @@
         margin-right: auto;
 
       }
-
       .index article{
           -webkit-column-count: 1;
           -mox-column-count: 1;
           column-count: 1;
       }
+
+      /* Ensure there's only 1 or 3 columns */
+      @media screen and (max-width: 1459px) {
+       body article {
+          -webkit-column-count: 1;
+          -mox-column-count: 1;
+          column-count: 1;
+        }
+      }
+
 
       section, footer{
         margin: 4em;
