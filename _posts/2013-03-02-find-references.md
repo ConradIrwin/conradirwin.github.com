@@ -1,5 +1,5 @@
 ---
-title: Tracking down memory leaks in Ruby
+title: Visualizing memory leaks in Ruby
 permalink: blog/find-references.html
 layout: post
 fuzzydate: Mar 2013
