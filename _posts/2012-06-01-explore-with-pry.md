@@ -2,7 +2,7 @@
 title: How to program like an explorer (with Pry!).
 permalink: blog/explore-with-pry.html
 layout: post
-credit: John Mair
+credit: John Mair, Ryan King
 fuzzydate: June 2012
 ---
 
@@ -71,7 +71,7 @@ state.
 Using Pry as a REPL
 -------------------
 
-Pry is a REPL designed with these features in mind. Taking inspiration from SmallTalk and
+Pry is a REPL designed with these features in mind. Taking inspiration from Smalltalk and
 SLIME, it embraces the idea of exploratory programming and helps you to do it more
 effectively. While it'd take me too long to cover [all of its
 features](https://github.com/pry/pry/wiki), here are the two I consider most important:
