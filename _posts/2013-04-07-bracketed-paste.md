@@ -8,12 +8,12 @@ fuzzydate: April 2013
 One of the least well known, and therefore least used, features of many terminal
 emulators is [bracketed paste
 mode](http://www.xfree86.org/current/ctlseqs.html#Bracketed Paste Mode). When
-you are in bracketed paste mode and you paste into your terminal the terminal
-emulator will bracket the content you paste with the sequences `\e[200~` and
-`\e[201~`.
+you are in bracketed paste mode and you paste into your terminal the content
+will be wrapped by the sequences `\e[200~` and `\e[201~`.
 
 <aside>For example, let's say I copied the string `"echo 'hello'\n"` from a
-website. When I paste the program will see `"\e[200~echo 'hello'\n\e[201~"`</aside>
+website. When I paste into my terminal it will send `"\e[200~echo 'hello'\n\e[201~"`
+to whatever program is running.</aside>
 
 I admit this is hard to get excited about, but it turns out that it enables
 something very cool: programs can tell the difference between stuff you type
@@ -71,11 +71,14 @@ correct indentation.
 
 The usual work around for this is to manually run `":set paste"` inside vim
 before pasting, but I often forget. The
-[vim-bracketed-paste](https://github.com/ConradIrwin/vim-bracketed-paste) plugin
-uses code from [Chis
+[vim-bracketed-paste](https://github.com/ConradIrwin/vim-bracketed-paste)
+plugin uses code from [Chis
 Page](http://stackoverflow.com/questions/5585129/pasting-code-into-terminal-window-into-vim-on-mac-os-x/7053522#7053522)
 to do this automatically for me, so the content I paste into vim does not get
-automatically indented but the lines I type manually still do.
+automatically indented but the lines I type manually still do. You can install
+this plugin using pathogen, or by copy-pasting [the
+code](https://github.com/ConradIrwin/vim-bracketed-paste/blob/master/plugin/bracketed-paste.vim)
+into your `~/.vimrc`.
 
 Technical details
 =================
@@ -102,9 +105,10 @@ Terminal support
 ================
 
 For a long time bracketed paste mode was only supported by xterm and its
-derivatives (urxvt, etc.), but as of recently support has been added to
-most other terminals. I think recentish gnome-terminal, iTerm2, and Terminal.app
-should all work, but [let me know](mailto:me@cirw.in) if you know better.
+derivatives (urxvt, etc.), but as of recently (a year or so ago) support has
+been added to most other terminals, including libvte which powers
+gnome-terminal et.al., iTerm 2 and Terminal.app. In other words, almost every
+terminal in widespread use now suppports bracketed paste mode.
 
 If you maintain a program that runs inside a terminal emulator, now is
 definitely the time to consider adding support for bracketed paste mode. Even
