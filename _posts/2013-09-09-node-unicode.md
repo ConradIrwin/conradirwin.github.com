@@ -62,10 +62,10 @@ For now the easiest solution is to install the
 [unicode-dragon](https://npmjs.org/package/unicode-dragon) module from npm, and
 use it to ensure your strings are valid Unicode:
 
-```javascript
+{% highlight javascript %}
 unicodeDragon = require('unicode-dragon');
 var validString = unicodeDragon(buffer.toString('utf-8'));
-```
+{% endhighlight %}
 
 Ideally this problem would be fixed in V8 itself, and I've opened a [bug
 report](https://code.google.com/p/v8/issues/detail?id=2875) about it. There may
