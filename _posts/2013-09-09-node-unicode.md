@@ -44,9 +44,7 @@ characters outside this range UTF-16 uses four bytes, with each pair of bytes
 in the range 0xD800 - 0xDFFF.
 
 <figure class="image">
-  <a href="../images/unicode.png" title="Bit layout comparison"/>
-    <img src="../images/unicode.png" alt="Bit layout comparison"/>
-  </a>
+  <a href="../images/unicode.png" title="Bit layout comparison"><img src="../images/unicode.png" alt="Bit layout comparison"/></a>
 </figure>
 
 Unfortunately for us, Javascript has never been updated to support UTF-16.
