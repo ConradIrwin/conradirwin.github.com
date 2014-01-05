@@ -1,0 +1,21 @@
+<body>
+<p>This page should alert 'about to crash!' then 'crashed!' on boot.</p>
+<p>Instead it only alerts 'about to crash!'.</p>
+
+<p>You can verify that both messages should appear by clicking on this message.</p>
+
+<script>
+setTimeout(function () {
+  var doing = false;
+
+  window.onerror = function () {
+    alert('crashed!');
+  };
+  document.body.addEventListener('click', function () {
+    alert('about to crash!');
+    throw new Error("fail");
+  });
+  document.body.click();
+}, 10);
+
+</script>
