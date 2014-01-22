@@ -15,11 +15,10 @@ Hash-injection is much less severe than SQL-injection, because an attacker is
 more limited in the kind of changes they can make, but it can lead to
 authentication-bypass, denial of service, or timing attacks.
 
-I reported this to MongoDB as
-[SECURITY-90](https://jira.mongodb.org/browse/SECURITY-90), and they recommend
-fixing this by patching your application as described below. Alternatively you
-can install my [mongoid-rails](https://github.com/ConradIrwin/mongoid-rails)
-gem which automatically fixes this for you.
+I reported this to MongoDB as SECURITY-90, and they recommend fixing this by
+patching your application as described below. Alternatively you can install my
+[mongoid-rails](https://github.com/ConradIrwin/mongoid-rails) gem which
+automatically fixes this for you.
 
 The Problem with Rails
 ----------------------
