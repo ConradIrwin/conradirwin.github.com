@@ -1,8 +1,9 @@
 ---
-title: How to avoid hash-injection attacks in MongoDB.
+title: Avoiding MongoDB hash-injection attacks
 permalink: blog/hash-injection.html
 layout: post
 fuzzydate: January 2014
+credit: Emily Stolfo, James Smith, Simon Maynard
 ---
 
 [MongoDB](http://mongodb.com) is a popular document store. Its query API neatly
@@ -11,7 +12,7 @@ framework like Rails, it's easy to build an app that's vulnerable to a
 hash-injection attack.
 
 Hash-injection is much less severe than SQL-injection, because an attacker is
-more limited in the kind of changes he can make, but it can lead to
+more limited in the kind of changes they can make, but it can lead to
 authentication-bypass, denial of service, or timing attacks.
 
 I reported this to MongoDB as
