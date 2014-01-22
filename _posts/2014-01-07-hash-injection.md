@@ -1,5 +1,5 @@
 ---
-title: Avoiding MongoDB hash-injection attacks.
+title: How to avoid hash-injection attacks in MongoDB.
 permalink: blog/hash-injection.html
 layout: post
 fuzzydate: January 2014
