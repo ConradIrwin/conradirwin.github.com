@@ -6,10 +6,10 @@ fuzzydate: April 2014
 style: "article{ -webkit-column-count: 1; -moz-column-count: 1; column-count: 1; }"
 ---
 
-This is a companion article to [IPv6 comes to San Francisco](ipv6) with detailed
-instructions for Comcast and Sonic.net.
+This is a companion article to [IPv6 comes to San Francisco](ipv6) that explains
+how to set up IPv6 with Sonic.net and Comcast.
 
-### Comcast
+## <span id="comcast">Comcast</span>
 For Comcast, you can double-check that you have support by visiting
 [comcast6.net](http://www.comcast6.net/). If you see "Your <abbr title="Cable
 Modem Termination System">CMTS</abbr> is ready for IPv6.", you're ready to
@@ -41,7 +41,7 @@ has an IPv6 address, you also need to reset the wireless connection on your
 laptop. (on a Mac you may need to open network settings and click "Forget this
 network")
 
-### Sonic.net
+## <span id="sonic-net">Sonic.net</span>
 
 Sonic.net is a little more manual to configure. They use IPv6 tunnelling (instead
 of IPv6 end-to-end) but there's no difference as far as your laptop is concerned.
