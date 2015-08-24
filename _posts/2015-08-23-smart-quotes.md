@@ -1,9 +1,10 @@
 ---
 title: Hacking smart-quote support into a font
-permalink: blog/typography.html
+permalink: blog/smart-quotes.html
 layout: post
 fuzzydate: Aug 2015
 style: "article{ -webkit-column-count: 1; -moz-column-count: 1; column-count: 1; }"
+credit: Rahul Vohra & Vivek Sodera
 ---
 
 <figure class="image">
