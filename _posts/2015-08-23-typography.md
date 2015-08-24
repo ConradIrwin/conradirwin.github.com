@@ -63,7 +63,7 @@ The most essential feature to enable is `"kern"`, which enables proper kerning. 
 Smart quotes
 ============
 
-Under the hood each OpenType feature is a set of pattern matches: when a certain sequence of glyphs occurs you can `sub`stitute a new glyph into place, or change its `pos`ition. The [OpenType Cookbook](http://opentypecookbook.com/index.html) is a good reference for the syntax used, which is supported by most font editing tools and processed by the [ADFKO](https://github.com/adobe-type-tools/afdko).
+Under the hood each OpenType feature is a set of pattern matches: when a certain sequence of glyphs occurs you can <b>sub</b>stitute a new glyph into place, or change its <b>pos</b>ition. The [OpenType Cookbook](http://opentypecookbook.com/index.html) is a good reference for the syntax used, which is supported by most font editing tools and processed by the [ADFKO](https://github.com/adobe-type-tools/afdko).
 
 The patterns are very simple, but you can use a few techniques to implement surprisingly complicated substitutions.
 
