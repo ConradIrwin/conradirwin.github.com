@@ -9,7 +9,7 @@ style: "article{ -webkit-column-count: 1; -moz-column-count: 1; column-count: 1;
 Recently I added our first animated icon to Superhuman as part of the transition to the search interface:
 
 <a style="display: block; text-align: center" href="../images/search.mp4">
-    <video style="display: inline;" autoplay="true" loop="true">
+    <video style="display: inline; width: 100%" autoplay="true" loop="true">
         <source src="../images/search.mp4" />
     </video>
 </a>
