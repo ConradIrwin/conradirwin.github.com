@@ -28,7 +28,8 @@ The way I do this is to write a simple program that can draw the animation into 
 The disadvantage of using canvas is that I need javascript to compute a new frame every 16ms. In an ideal world, this is no problem. I use requestAnimationFrame and drawing an icon takes a lot less than 16ms of CPU-time.
 
 Unfortunately in our more realistic world, the browser is busy trying to render the search UI, or (even more challengingly) the user's Important inbox during the transition. As javascript is single-threaded, this means that my animation frames may be delayed by significant periods of time while the browser runs unrelated javascript code, or renders chunks of HTML. This causes lagginess and kills the delightful user experience.
-Accelerating canvas
+
+# Accelerating canvas
 
 There are a couple of ways to avoid the single-threaded nature of javascript. In this case the most pertinant is to offload the animation to the graphics card. Unfortunately graphics cards are not good at executing arbitrary javascript, and so we need to re-frame the problem in a manner that the GPU can handle well.
 
