@@ -4,6 +4,7 @@ permalink: blog/smooth-animations.html
 layout: post
 fuzzydate: September 2015
 style: "article{ -webkit-column-count: 1; -moz-column-count: 1; column-count: 1; }"
+credit: Rahul Vohra
 ---
 
 Recently I added our first animated icon to Superhuman as part of the transition to the search interface:
@@ -78,8 +79,8 @@ Here's the actual ten frames of the icon we're using right now, slowed down so y
     </style>
 </div>
 
-Here's the actual ten frames of the icon we're using right now, slowed down so
-you can see how it works:
+Here's the actual ten frames of the icon we're using right now. Hover over it
+to see how it works in slow-motion:
 
 <div class="window">
   <div class="slide"></div>
