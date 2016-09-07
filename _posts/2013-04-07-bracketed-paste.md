@@ -3,6 +3,7 @@ title: bracketed paste mode
 permalink: blog/bracketed-paste.html
 layout: post
 fuzzydate: April 2013
+credit: Andrew Janke
 ---
 
 One of the least well known, and therefore least used, features of many terminal
@@ -99,7 +100,7 @@ In summary:
 4. Disable bracketed paste: `printf "\e[?2004l"`
 
 <aside>If you want more detail, there's a thorough (and thoroughly inscrutable)
-reference on [xfree86.org](http://www.xfree86.org/current/ctlseqs.html).</aside>
+reference on [xfree86.org](http://www.xfree86.org/4.7.0/ctlseqs.html#Bracketed%20Paste%20Mode).</aside>
 
 Terminal support
 ================
