@@ -1,47 +1,124 @@
 ---
 title: My Blog.
-layout: post
 index: index
 fuzzydate: programmer
 ---
 
-<ul>
-{% for post in site.posts %}
-<li>{{post.fuzzydate}} <a href="{{post.permalink | replace:'.html',''}}">{{post.title}}</a></li>
-{% endfor %}
-</ul>
+<meta charset="utf-8">
+<style>
+  a {
+    text-decoration: none;
+    color: #0067d6;
+  }
 
-<hr/>
+  body {
+    font-family: 'Liberation Serif', 'Georgia';
+    background: #ff8300;
+    line-height: 1.4;
+    max-width: 1500px;
+    margin: auto;
+  }
 
-<h1>Websites</h1>
+  h1 {
+    margin-top: 36px;
+    margin-bottom: 12px;
+    margin-left: 8px;
+    font-weight: 200;
+    font-family: 'Helvetica Neue', Ariel;
+  }
+  p { 
+    margin-left: 24px;
+  }
+  article {
+    padding: 12px;
+    background: white;
+    margin: 50px;
+    box-shadow: rgba(0,0,0,0.6) 0px 2px 16px -1px;
+  }
+</style>
 
-<ul>
-  <li><a href="http://bugsnag.com">Bugsnag</a>* — cross-language intelligent exception tracking</li>
-  <li><a href="http://showterm.io">showterm</a> — text-based terminal screencasts</li>
-  <li><a href="http://plotocrat.com">plotocrat</a> — instant data visualizations</li>
-  <li><a href="http://cirw.in/gpg-decoder/">gpg-decoder</a> — debugger for GPG data</li>
-</ul>
+<body>
 
-<h1>Tools</h1>
+  <article>
 
-<ul>
-  <li><a href="http://pryrepl.org">Pry</a> — the featureful development console for ruby</li>
-  <li><a href="https://github.com/ConradIrwin/gist">gist</a> — terminal client for GitHub's pastebin</li>
-  <li><a href="https://github.com/ConradIrwin/dotgpg">dotgpg</a> — secure storage for production secrets</li>
-  <li><a href="http://rapportive.com">Rapportive</a>* — making you brilliant with people (Gmail version)</li>
-  <li><a href="http://intro.linkedin.com">Intro</a>* — making you brilliant with people (iOS version)</li>
-</ul>
 
-<h1>Libraries**</h1>
+    <a href="images/ConradIrwin.jpg"><img style="width: 150px; float: right; margin: 50px; margin-bottom: 12px;" src="images/ConradIrwin.jpg"/></a>
+    <h1>Conrad Irwin</h1>
+      <ul>
+        <li>Founder/CTO of <a href="https://superhuman.com">Superhuman</a></li>
+      </ul>
+      <ul>
+        <li><a href="https://twitter.com/ConradIrwin">@ConradIrwin</a> (<a href="https://instagram.com/ConradIrwin">Instagram</a>)</li>
+        <li><a href="mailto:me@cirw.in">me@cirw.in</a></li>
+        <li><a style="text-decoration: none" href="https://keybase.io/conradirwin"><code>699A 0DED 55AD CAAD</code></a></li>
+      </ul>
 
-<ul>
-  <li><a href="https://github.com/ConradIrwin/lspace">pry-rescue</a> — break on unhandled exception for Pry</li>
-  <li><a href="https://github.com/ConradIrwin/lspace">lspace</a> — continuation-local dynamic scope for ruby</li>
-  <li><a href="https://github.com/ConradIrwin/em-imap">em-imap</a> — IMAP for event machine</li>
-  <li><a href="https://github.com/ConradIrwin/unicode-dragon">unicode-dragon</a> — Fix encoding errors in Node</li>
-  <li><a href="https://github.com/ConradIrwin/git-aliae">git-aliae</a> — I have more aliases than you</li>
-  <li><a href="https://github.com/ConradIrwin/source-map">source_map</a> — Source map support in Ruby</li>
-</ul>
 
-<p>* While working at Bugsnag Inc, Rapportive Inc, and LinkedIn Corp respectively.</p>
-<p>** See also <a href="https://github.com/ConradIrwin/repositories">My Github</a></p>
+
+    <h1>Projects</h1>
+
+    <ul>
+      <li><a href="https://superhuman.com">Superhuman</a> — the fastest email client in the world</li>
+      <li><a href="https://pryrepl.org">Pry</a> — the featureful development console for ruby</li>
+      <li><a href="https://bugsnag.com">Bugsnag</a> — cross-language intelligent exception tracking</li>
+      <li><a href="https://showterm.io">showterm</a> — text-based terminal screencasts</li>
+      <li><a href="https://plotocrat.com">plotocrat</a> — instant data visualizations</li>
+      <li><a href="https://cirw.in/gpg-decoder/">gpg-decoder</a> — debugger for GPG data</li>
+      <li><a href="https://github.com/defunkt/gist">gist</a> — terminal client for GitHub's pastebin</li>
+      <li><a href="https://github.com/ConradIrwin/dotgpg">dotgpg</a> — secure storage for production secrets</li>
+
+      <li><a href="http://rapportive.com">Rapportive</a>* — making you brilliant with people (Gmail version)</li>
+      <li><a href="http://intro.linkedin.com">Intro</a>* — making you brilliant with people (iOS version)</li>
+
+    </ul>
+
+    <p>* now defunct</p>
+
+
+    <h1>Libraries**</h1>
+
+    <ul>
+      <li><a href="https://github.com/ConradIrwin/fast64">fast64</a> — the fastest Base64 decoder in Chrome?</li>
+      <li><a href="https://github.com/ConradIrwin/trie-ing">trie-ing</a> — a weighted trie for autocompletion</li>
+      <li><a href="https://github.com/superhuman/command-score">command-score</a> — scoring for the Superhuan command palette</li>
+      <li><a href="https://github.com/ConradIrwin/lspace">pry-rescue</a> — break on unhandled exception for Pry</li>
+      <li><a href="https://github.com/ConradIrwin/lspace">lspace</a> — continuation-local dynamic scope for ruby</li>
+      <li><a href="https://github.com/ConradIrwin/em-imap">em-imap</a> — IMAP for event machine</li>
+      <li><a href="https://github.com/ConradIrwin/unicode-dragon">unicode-dragon</a> — Fix encoding errors in Node</li>
+      <li><a href="https://github.com/ConradIrwin/git-aliae">git-aliae</a> — I have more aliases than you</li>
+      <li><a href="https://github.com/ConradIrwin/source-map">source_map</a> — Source map support in Ruby</li>
+    </ul>
+
+    <p>** See also <a href="https://github.com/ConradIrwin/repositories">My Github</a></p>
+
+    <h1>Blog posts</h1>
+
+    <ul>
+    {% for post in site.posts %}
+    <li>{{post.fuzzydate}} — <a href="{{post.permalink | replace:'.html',''}}">{{post.title}}</a></li>
+    {% endfor %}
+    </ul>
+
+    <h1>Publications</h1>
+    <p> Dec, 2015 <a href="https://martin.kleppmann.com/papers/mrsa-pass15.pdf">9th International Conference on Passwords</a> <i>Strengthening public key authentication against key theft</a></i> with <a href="https://martin.kleppmann.com/">Martin Kleppmann</a></p>
+
+    <p>Mar, 2015 Patent <a href="https://patents.google.com/patent/US20150070283">US 2015/0070283 A1</a> <i>Techniques for hardware-optimized, user-responsive, carousels using a family of bezier curves in pure CSS</i></p>
+    <p>Jun, 2014 Patent <a href="https://patents.google.com/patent/US20140164529A1">US 2014/0164529 A1</a> <i>Communication systems and methods</i> with the Rapportive team</p>
+
+    <p>Oct, 2011 <a href="http://design.cs.iastate.edu/vmil/2011/papers/p02-kell.pdf">@SPLASH 2011</a> <i>Virtual Machines should be invisible</i> with <a href="https://www.cs.kent.ac.uk/people/staff/srk21/">Stephen Kell</a></p>
+
+    <h1>Small contributions to bigger things</h1>
+
+    <ul>
+      <li><a href="https://github.com/wikimedia/mediawiki/commit/13eb1fe98ede7734c894f2afadda3bbb77a9af6f">Wikipedia</a> — &#x7b;{safesubst:}}</li>
+      <li><a href="https://github.com/mozilla/gecko-dev/commit/58ebc8457f2181faaaf22ab551acb485e26f97ba">Firefox</a> — column number in stack traces</li>
+      <li><a href="https://github.com/git/git/commit/b4bd466820ee272fccfefff1d23d64c7826d1d07">Git</a> — git commit -p</a></li>
+      <li><a href="https://github.com/GNOME/libxml2/commit/7d0d2a50ac94850d5c5a6360fa1c931a89e75ddd">libxml2</a> – fixed O(n ** 2) memory allocations</li>
+      <li><a href="https://github.com/golang/go/commit/7f52b43954d75aa0c444d57b9d0eb7ff36eb3dd0">Golang</a> — utf-8 support for Email header parsing</li>
+
+    </ul>
+
+
+
+  </article>
+</body>
