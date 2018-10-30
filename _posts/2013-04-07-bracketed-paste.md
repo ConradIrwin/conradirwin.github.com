@@ -12,8 +12,8 @@ mode](http://www.xfree86.org/current/ctlseqs.html#Bracketed Paste Mode). When
 you are in bracketed paste mode and you paste into your terminal the content
 will be wrapped by the sequences `\e[200~` and `\e[201~`.
 
-<aside>For example, let's say I copied the string `"echo 'hello'\n"` from a
-website. When I paste into my terminal it will send `"\e[200~echo 'hello'\n\e[201~"`
+<aside>For example, let's say I copied the string <code>"echo 'hello'\n"</code> from a
+website. When I paste into my terminal it will send <code>"\e[200~echo 'hello'\n\e[201~"</code>
 to whatever program is running.</aside>
 
 I admit this is hard to get excited about, but it turns out that it enables
@@ -40,12 +40,13 @@ no credit for writing any of this code; as clichéd as it sounds, I copy-pasted
 it from the internet :).
 
 <figure>
-[safe-paste](https://github.com/robbyrussell/oh-my-zsh/pull/1698) for oh-my-zsh
-========================
+<h1>
+<a href="https://github.com/robbyrussell/oh-my-zsh/pull/1698">safe-paste</a> for oh-my-zsh
+</h1>
 
-The safe-paste plugin for [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
-is built out of the code I originally got from [Michael
-Magnusson](http://www.zsh.org/mla/users/2011/msg00367.html). It turns off
+The safe-paste plugin for <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a>
+is built out of the code I originally got from <a href="http://www.zsh.org/mla/users/2011/msg00367.html">Michael
+Magnusson</a>. It turns off
 running lines of input during pastes. This means that nothing you paste into
 your shell, either deliberately or accidentally, will run until you manually hit
 the enter key. This gives you time to double-check what you pasted before your
@@ -99,7 +100,7 @@ In summary:
 4. Disable bracketed paste: `printf "\e[?2004l"`
 
 <aside>If you want more detail, there's a thorough (and thoroughly inscrutable)
-reference on [xfree86.org](http://www.xfree86.org/4.7.0/ctlseqs.html#Bracketed%20Paste%20Mode).</aside>
+reference on <a href="http://www.xfree86.org/4.7.0/ctlseqs.html#Bracketed%20Paste%20Mode">xfree86.org</a>.</aside>
 
 Terminal support
 ================
