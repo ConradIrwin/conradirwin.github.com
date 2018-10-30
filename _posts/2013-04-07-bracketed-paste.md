@@ -59,7 +59,7 @@ use vanilla zsh, then you can just copy [the
 code](https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/safe-paste/safe-paste.plugin.zsh)
 into your `~/.zshrc`.
 
-<b>Update:</b> Readline (as of v 7) and thus Bash (as of v4.4) now have support for bracketed paste mode too! You can enable it by adding [`set enable-bracketed-paste on`](https://cnswww.cns.cwru.edu/php/chet/readline/rluserman.html#SEC9) to your `~/.inputrc`.
+<b>Update:</b> Readline (as of v 7) and thus Bash (as of v4.4) now have support for bracketed paste mode too! You can enable it by adding [`set enable-bracketed-paste on`](https://tiswww.case.edu/php/chet/readline/rluserman.html#SEC9) to your `~/.inputrc`.
 
 [vim-bracketed-paste](https://github.com/ConradIrwin/vim-bracketed-paste)
 ===================
