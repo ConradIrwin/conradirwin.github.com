@@ -110,12 +110,11 @@ To re-iterate: MVC is awesome, but it's designed with decades old technologies. 
 just a update to make better use of the new tools we have.
 
 <aside>P.S. I'm not the only one beginning to think this way either, if you like
-the idea of MOVE you should check out [objectify](https://github.com/bitlove/objectify)
+the idea of MOVE you should check out <a href="https://github.com/bitlove/objectify">objectify</a>
 and
-[interactions](http://collectiveidea.com/blog/archives/2012/06/28/wheres-your-business-logic/)
-which try to add some of the benefits of MOVE to existing MVC applications.  Please [let
-me know](https://twitter.com/conradirwin) if you have other links that should be
+<a href="http://collectiveidea.com/blog/archives/2012/06/28/wheres-your-business-logic/">interactions</a>
+which try to add some of the benefits of MOVE to existing MVC applications.  Please <a href="https://twitter.com/conradirwin">let me know</a> if you have other links that should be
 here!</aside>
 
 <aside>P.P.S This blog post has been translated into Japanese no fewer than twice:
-[d.hatena.ne.jp](http://d.hatena.ne.jp/nowokay/20120704#c) and [blog.neo.jp](http://blog.neo.jp/dnblog/index.php?module=Blog&blog=pg&action=CommentPostDo&entry_id=3442), and also into [Russian](http://habrahabr.ru/post/147038/), [Korean](http://woonohyo.tistory.com/39) and [Spanish](http://www.alanchavez.com/mvc-esta-muerto-es-tiempo-de-darle-paso-a-una-alternativa-move/) Thanks!</aside>
+<a href="http://d.hatena.ne.jp/nowokay/20120704#c">d.hatena.ne.jp</a> and <a href="http://blog.neo.jp/dnblog/index.php?module=Blog&blog=pg&action=CommentPostDo&entry_id=3442">blog.neo.jp</a>, and also into <a href="http://habrahabr.ru/post/147038/">Russian</a>, <a href="http://woonohyo.tistory.com/39">Korean</a> and <a href="http://www.alanchavez.com/mvc-esta-muerto-es-tiempo-de-darle-paso-a-una-alternativa-move/">Spanish</a>. Thanks!</aside>
