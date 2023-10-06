@@ -1,2 +1,3 @@
 markdown: rdiscount
 pygments: true
+include: [".well-known"]
