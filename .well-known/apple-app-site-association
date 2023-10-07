@@ -3,11 +3,21 @@
     "details": [
       {
         "appIDs": [
-          "S3TBLN9498.dev.zed.lt2"
+          "S3TBLN9498.dev.zed.zed-Dev"
         ],
         "components": [
           {
-            "/": "/app/*"
+            "/": "/zed/*"
+          }
+        ]
+      },
+      {
+        "appIDs": [
+          "S3TBLN9498.dev.zed.lt3"
+        ],
+        "components": [
+          {
+            "/": "/test/*"
           }
         ]
       }
