@@ -13,6 +13,16 @@
       },
       {
         "appIDs": [
+          "MQ55VZLNZQ.dev.zed.Zed-Dev"
+        ],
+        "components": [
+          {
+            "/": "/dev/channel/*"
+          }
+        ]
+      },
+      {
+        "appIDs": [
           "S3TBLN9498.dev.zed.lt3"
         ],
         "components": [
