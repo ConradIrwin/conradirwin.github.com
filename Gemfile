@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
-gem 'jekyll'
+gem 'jekyll', '~> 3.8', '>= 3.8.3'
 gem 'liquid'
 gem 'redcarpet'
 gem 'maruku'
 gem 'rdiscount'
 gem 'RedCloth'
-
+gem 'pygments.rb'
