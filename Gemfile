@@ -6,3 +6,6 @@ gem 'maruku'
 gem 'rdiscount'
 gem 'RedCloth'
 gem 'pygments.rb'
+gem "csv"
+gem "base64"
+gem "bigdecimal"
