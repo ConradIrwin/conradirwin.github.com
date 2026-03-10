@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Should Just</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap");
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background: #1a1a1a;
+                color: #c8c8c8;
+                font-family: "Inter", sans-serif;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 2rem;
+            }
+
+            .rant {
+                max-width: 720px;
+                text-align: center;
+            }
+
+            .line {
+                font-size: 1.5rem;
+                line-height: 1.8;
+                font-weight: 400;
+                margin-bottom: 0.4rem;
+                letter-spacing: -0.01em;
+            }
+
+            .hero {
+                font-size: 6rem;
+                font-weight: 900;
+                line-height: 1.05;
+                letter-spacing: -0.04em;
+                margin: 2.4rem 0;
+                color: #ffffff;
+                text-transform: uppercase;
+            }
+
+            .hero .should {
+                color: #ff8c00;
+            }
+
+            .hero .just {
+                color: #ff8c00;
+            }
+
+            .rage {
+                display: block;
+                font-size: 3rem;
+                margin-top: 3rem;
+                animation: shake 0.07s linear infinite;
+            }
+
+            @keyframes shake {
+                0%,
+                100% {
+                    transform: translateX(0);
+                }
+                50% {
+                    transform: translateX(4px);
+                }
+            }
+
+            .punchline {
+                font-size: 1.3rem;
+                line-height: 1.7;
+                color: #888;
+                font-style: italic;
+                margin-top: 2rem;
+            }
+
+            .punchline em {
+                color: #e0e0e0;
+                font-style: normal;
+                font-weight: 700;
+            }
+
+            @media (max-width: 600px) {
+                .hero {
+                    font-size: 3.5rem;
+                }
+
+                .line {
+                    font-size: 1.15rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="rant">
+            <p class="line">You <em>should</em> just.</p>
+            <p class="line">We <em>should</em> just.</p>
+
+            <p class="hero">
+                <span class="should">Should</span>
+                <span class="just">Just</span>
+            </p>
+
+            <p class="line">All means the same.</p>
+
+            <p class="punchline">
+                I don't want to.<br />
+                I want <em>you</em> to.
+            </p>
+
+            <p class="punchline">
+                The <em>just</em> is there to make it sound trivial.<br />
+                It's not.
+            </p>
+
+            <span class="rage">😡</span>
+        </div>
+    </body>
+</html>
