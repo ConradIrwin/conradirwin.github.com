@@ -1,0 +1,219 @@
+================================================================================
+COMCAST AS7922 -- SUSTAINED UPLOADS CORRUPTED IN TRANSIT
+One TCP segment zero-filled past the first 230 bytes of the IP packet
+================================================================================
+
+Reporter : Conrad Irwin
+Service  : Comcast Business, Denver CO
+Affected : public IP 73.243.42.115, gateway 10.1.10.1
+Control  : public IP 73.153.214.28, gateway 10.107.10.1 (second Comcast
+           circuit, same building, completely clean)
+
+Tooling and raw data:
+  https://gist.github.com/ConradIrwin/7faa28af2a71ad7ab8c7612f7522dc14
+
+
+--------------------------------------------------------------------------------
+1. SUMMARY
+--------------------------------------------------------------------------------
+
+Data uploaded from one of our two Comcast Business circuits is being corrupted
+in transit. Over HTTPS this surfaces as a TLS integrity failure:
+
+    curl: (56) LibreSSL SSL_read: error:1404C3FC:SSL routines:ST_OK:
+          sslv3 alert bad record mac
+
+Over unencrypted HTTP there is no error at all -- the data is silently
+altered. Uploads only; downloads are clean across hundreds of megabytes.
+IPv4 and IPv6 are affected equally.
+
+This is not a signal-quality problem and it is not our equipment. The same
+laptop is completely clean on a second Comcast circuit in the same building.
+
+
+--------------------------------------------------------------------------------
+2. WHAT THE CORRUPTION LOOKS LIKE
+--------------------------------------------------------------------------------
+
+We uploaded a payload containing no zero bytes over plain HTTP to an endpoint
+that echoes the request body back, then compared byte for byte. Because the
+payload contains no zeros by construction, any zero byte received is
+unambiguously damage rather than original data.
+
+Every event has the identical shape. Exactly one TCP segment is destroyed:
+
+  - the first 230 bytes of the IP packet survive intact
+  - every byte after that arrives as 0x00
+  - the zeroed run ends precisely on a TCP segment boundary
+  - total stream length is preserved; adjacent segments are untouched
+  - the damaged packet carries a VALID TCP checksum, so the receiving stack
+    accepts it and the byte stream stays aligned
+
+The 230-byte figure is constant across both address families once the header
+size difference is accounted for:
+
+    family   MSS    bytes zeroed   IP+TCP hdrs   packet bytes kept
+    ------   ----   ------------   -----------   -----------------
+    IPv4     1388           1198            40                 230
+    IPv6     1348           1178            60                 230
+
+A fixed header-slice boundary like this is characteristic of a forwarding
+pipeline that copies a packet header and loses the body. It is not random bit
+corruption, which would vary in size and position. Note also that damage from
+a noisy line is caught by frame checksums and discarded, producing
+retransmissions rather than corrupted data -- and it would affect downloads,
+which are clean.
+
+
+--------------------------------------------------------------------------------
+3. MEASUREMENTS
+--------------------------------------------------------------------------------
+
+Uploads of a 1 MiB payload, HTTPS:
+
+    destination                            affected circuit   control circuit
+    -----------------------------------    ----------------   ---------------
+    cloudflare.com                         5-12% failures     0 / 550
+    s3.us-west-2.amazonaws.com             0 / 150            --
+    www.google.com                         0 / 400            --
+    www.facebook.com                       0 / 400            --
+
+Controls were run alternately with the failing case, so both saw identical
+network conditions in the same minutes.
+
+Byte-verified plaintext round trips:
+
+    affected circuit : 6 corruption events over 140.6 MiB
+    control circuit  : 0 corruption events over 225 MiB
+
+Downloads from the affected circuit: 0 failures over 320 MB.
+
+
+--------------------------------------------------------------------------------
+4. WHAT WE HAVE ALREADY ELIMINATED
+--------------------------------------------------------------------------------
+
+Please do not re-test these; each was measured, not assumed.
+
+  Client hardware      Same laptop, same wireless adapter, clean on a second
+                       Comcast circuit in the same building (0/550 vs 5-12%).
+                       Packet captures show correct, well-formed data leaving
+                       the machine.
+
+  NIC offloads         Transmit segmentation offload disabled -- no change.
+
+  MTU / fragmentation  Full 1500-byte MTU confirmed unfragmented. Clamping the
+                       segment size to 1300 did not help (slightly worse).
+
+  Gateway NAT          IPv6 is not translated and fails at the same rate.
+
+  Gateway state        Power cycle -- no change; rate measured before and
+                       after.
+
+  SecurityEdge         Disabled -- failure rate roughly halved but corruption
+                       continued, byte-for-byte identical in character.
+
+  Line quality         Downloads clean over 320 MB. The WORKING circuit has
+                       more than twice the first-hop jitter of the failing
+                       one, so jitter is not the variable.
+
+
+--------------------------------------------------------------------------------
+5. PATH
+--------------------------------------------------------------------------------
+
+Traceroutes show our failing traffic and our known-good traffic sharing every
+Comcast hop, diverging only after:
+
+    be-3211-pe11.910fifteenth.co.ibone.comcast.net
+
+We also observe ECMP spreading across cs01-cs04 at 1601 Mile High and across
+both be-3211 and be-3311 into pe11, used interchangeably by both failing and
+working destinations. Since traffic to AWS, Google and Facebook crosses those
+same routers and is clean, the access network and the Denver core appear to be
+ruled out.
+
+
+--------------------------------------------------------------------------------
+6. REPRODUCTION
+--------------------------------------------------------------------------------
+
+Create a 1 MiB payload:
+
+    dd if=/dev/zero of=/tmp/payload1m.bin bs=1048576 count=1
+
+Fails on the affected circuit (expect roughly 5-18 failures per 150):
+
+    for i in $(seq 1 150); do
+      curl -sS --max-time 40 -o /dev/null \
+        --data-binary @/tmp/payload1m.bin \
+        https://cloudflare.com/ || echo "FAILED request $i"
+    done
+
+Control -- expect zero:
+
+    for i in $(seq 1 150); do
+      curl -sS --max-time 40 -o /dev/null \
+        --data-binary @/tmp/payload1m.bin \
+        https://s3.us-west-2.amazonaws.com/ || echo "FAILED request $i"
+    done
+
+IMPORTANT -- failures arrive in bursts, not at a steady rate. The longest
+clean run we recorded on the faulty circuit was 67 consecutive 1 MiB uploads.
+A twenty-request test passes routinely on a broken line. Please run the full
+150 before concluding the circuit is healthy.
+
+Failure probability also scales with the size of each upload: 64 KiB uploads
+fail about 0.1% of the time while 1 MiB uploads fail 5-12%. Use 1 MiB.
+
+Scripts that automate the above, including the byte-level corruption
+detector, are at:
+  https://gist.github.com/ConradIrwin/7faa28af2a71ad7ab8c7612f7522dc14
+
+
+--------------------------------------------------------------------------------
+7. OTHER CUSTOMERS REPORTING THE SAME FAULT
+--------------------------------------------------------------------------------
+
+This is not an isolated report. Three other Comcast customers have documented
+the same fingerprint, in Chicago, Delaware and one unspecified location, going
+back to March 2026 and still unresolved:
+
+  March 2026, Chicago (ORD) -- affects both Cloudflare and AWS CloudFront:
+  https://forums.xfinity.com/conversations/your-home-network/possible-packet-corruption-affecting-large-tls-uploads-on-comcast-backbone-as7922-toward-chicago-cdn-edges/69af1f4f4b98bf616a8d592e
+
+  July 2026 -- also affects scp over SSH to a non-CDN host, which shows the
+  fault is neither TLS-specific nor CDN-specific:
+  https://forums.xfinity.com/conversations/your-home-network/sustained-uploads-corrupted-tls-bad-record-mac-on-as7922-backbone-path-all-customer-equipment-eliminated-matches-march-report/6a54660ddae469435200da7f
+
+  Technical discussion thread:
+  https://gist.github.com/Efpophis/d81a07bde9e61323a8ecdfd221daf848
+
+Two points from those reports that bear directly on troubleshooting here:
+
+  - One customer had Comcast REPLACE THEIR GATEWAY. It did not resolve the
+    issue. Equipment swaps appear not to help.
+
+  - Uploads succeed immediately when routed over a VPN tunnel that bypasses
+    the Comcast path, which several customers have confirmed independently.
+
+The March report identifies the equivalent Chicago router as
+be-2211-pe11.350ecermak.il.ibone.comcast.net -- the same pe11 role on the same
+ibone backbone as the Denver router in our path.
+
+
+--------------------------------------------------------------------------------
+8. WHAT WE ARE ASKING FOR
+--------------------------------------------------------------------------------
+
+1. Escalation to backbone / NOC engineering rather than premises
+   troubleshooting or a line-quality technician visit.
+
+2. Comparison of the routing and peering path for 73.243.42.115 against
+   73.153.214.28, which works, and inspection of any aggregated link members
+   carrying the failing circuit's traffic for errors.
+
+3. Confirmation of firmware and provisioning on the affected gateway.
+
+We have packet captures of failing connections and corrupted payload samples
+available on request.
